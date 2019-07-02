@@ -1,0 +1,8 @@
+ {% extends 'base.html'%} {% block content %}
+{% for recipes in this_recipe %}
+<div class="row justify-content-center">
+    <a href="url_for('this_recipe', this_recipe_name = recipes.recipe_name)">{{ recipes.recipe_name }}</a>
+</div>
+{% endfor %}
+{% endblock %}
+   

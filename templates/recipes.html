@@ -1,0 +1,62 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row no-gutters">
+    <div class="container-fluid jumbotron-background">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to a bad cookbook</h1>
+            <p>Get started and search for a recepie</p>
+            <hr class="my-4">
+            <form class="search jumbotron-search col-md-8" action="{{url_for('search_recipe')}}" method="POST"
+                id="search_recipes">
+                <input name="search_recipe" id="search_recipe" class="form-control form-control-lg" type="text"
+                    placeholder="search recipe name" required>
+                <button type="submit" class="btn btn-primary">search</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row no-gutters">
+
+    <form class="search col-md-8" action="{{url_for('search_recipe_allergy')}}" method="POST"
+        id="search_recipes_allergy">
+        <input name="search_recipe_allergy" id="search_recipe_allergy" class="form-control form-control-lg" type="text"
+            placeholder="search allergen name" required>
+        <button type="submit" class="search-button">search for recipes that without this allergen</button>
+
+    </form>
+
+
+</div>
+{% for recipe in recipe_find %}
+<div col-4>
+    <a href="{{url_for('one_recipe', recipe_id=recipe._id) }}">
+        <h2 class="heading">{{ recipe.recipe_name }}</h2>
+    </a>
+</div>
+<div class="row">
+    <div class="col-3">
+        {% for ingredients in recipe.ingredient %}
+        <div class="row ingredient-line">{{loop.index}} {{ ingredients }}</div>
+        {% endfor %}
+    </div>
+    <div class="col-3">
+        {% for weights in recipe.weight %}
+        <div class="row ingredient-line"> {{ weights }}</div>
+        {% endfor %}
+    </div>
+    <div class="col-3">
+        {% for methods in recipe.method %}
+        <div class="row ingredient-line"> {{ methods }}</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-8">{{ recipe.allergens }}</div>
+</div>
+<a href="{{url_for('edit', recipe_id=recipe._id) }}">Edit</a>
+<a href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete</a> 
+{% endfor %}
+{% endblock %}

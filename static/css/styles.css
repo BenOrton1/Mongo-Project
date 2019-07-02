@@ -1,0 +1,162 @@
+/*-----base.htm*/
+
+body {
+    background-color: #e4e4c3;
+    overflow-x: hidden;
+}
+
+header {
+    height: 15vh;
+    background-color: #3c4244;
+}
+
+footer {
+    height: 15vh;
+    background-color: #76ad73;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.vertical-align-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-text {
+    text-align: center;
+}
+
+.header-text a {
+    text-decoration: none;
+    color: #fafafa;
+}
+
+.header-text a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 33vw;
+    right: 33vw;
+    border-top: 3px solid #fafafa;
+    border-bottom: 3px solid #fafafa;
+    transform: scale(1);
+    transform-origin: left;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.header-text a:hover::before {
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+
+
+.header-text a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30vw;
+    right: 30vw;
+    border-left: 3px solid #fafafa;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+
+}
+
+.header-text a:hover::after {
+    transform: scale(1);
+    transform-origin: top;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.nav-row {
+    position: absolute;
+    top: 0%;
+}
+
+.nav-link {
+    color: #fafafa;
+    text-decoration: none;
+
+}
+
+/*bace end*/
+
+/*jumbotron*/
+
+.jumbotron-background {
+    height: 100vh;
+    max-height: 100vw;
+    padding: 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../images/homepageimage.png");
+}
+
+.jumbotron {
+    position: relative;
+    height: 100vh;
+    max-height: 100vw;
+    width: 100vw;
+    background-color: #293c28bd;
+    color: #fafafa;
+    border-radius: 0;
+}
+
+.jumbotron h1 {
+    text-align: center;
+    /* margin: 15px; */
+}
+
+.jumbotron p {
+    text-align: center;
+}
+
+.jumbotron-search {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sub-heading {
+    padding: 50px;
+}
+
+/*form/button*/
+
+.form-control-lg {
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    margin: 30px 0px;
+    color: #fff;
+    background-color: #3c4244;
+    border-color: #fafafa;
+}
+
+.btn-primary:hover {
+    background-color: #161915e0;
+    border-color: #fafafa;
+}

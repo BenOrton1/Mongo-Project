@@ -1,0 +1,58 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="container-fluid">
+
+    <div class="row justify-content-center">
+        <h1>{{ this_recipe.recipe_name }}</h1>
+    </div>
+</div>
+<div class="row container-fluid">
+    <div class="col-4">
+        {% for ingredients in this_recipe.ingredient %}
+        <div class="row ingredient-line"> {{ ingredients }}</div>
+        {% endfor %}
+    </div>
+    <div class="col-4">
+        {% for weights in this_recipe.weight %}
+        <div class="row ingredient-line"> {{ weights }}</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+<ol>
+{% for step in this_recipe.method %}
+
+{% if step%}
+<li class="col-8 ingredient-line"> {{ step }}</li>
+{% endif %}
+{% endfor %}
+</ol>
+</div>
+
+<div class="row">
+<ol>
+{% for allergy in this_recipe.allergen %}
+
+{% if step%}
+<li class="col-8 ingredient-line"> {{ allergy }}</li>
+{% endif %}
+{% endfor %}
+</ol>
+</div>
+<div class="container-fluid">
+
+    <div class="row justify-content-center">
+
+        <form action="{{ url_for('allergy',this_recipe_name = this_recipe.recipe_name) }}" method="POST" class="col-md-8" id="allergen">
+
+            <label for="allergy">add allergen</label>
+            <textarea name="allergen" id="allergen" class="form-control" type="text" rows="1"></textarea>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Add step</button>
+        </form>
+    </div>
+</div>
+<a href="{{url_for('get_recipes')}}">Done</a>
+<a href="{{url_for('allergy', this_recipe_name = this_recipe.recipe_name)}}">add allergy advice</a>
+<a href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row justify-content-center">
+    <h1>Edit {{ this_recipe.recipe_name }}</h1>
+</div>
+
+<div class="row">
+    <form action="{{ url_for('update_recipe', recipe_id=this_recipe._id) }}" method="POST" class="col s12">
+        <div class="input-field col s12">
+            <input id="recipe_name" name="recipe_name" type="text" value="{{this_recipe.recipe_name}}">
+            <label for="icon_prefix">recipe Name</label>
+        </div>
+        <button>update</button>
+    </form>
+</div>
+<div class="row">
+    <div class="col-3">
+        <a href="{{url_for('edit_ingredients', recipe_id=this_recipe._id)}}">Update ingredients</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <a></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <a></a>
+    </div>
+</div>
+{% endblock %}
