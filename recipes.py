@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tempPasswordChangeLater' 
 
 app.config["MONGO_DBNAME"] = 'cookbook'
-app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
+app.config["MONGO_URI"] =os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
 

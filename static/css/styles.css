@@ -15,6 +15,23 @@ footer {
     background-color: #76ad73;
 }
 
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    color: #fafafa;
+    text-decoration: none;
+    border-bottom: 3px solid;
+    transform-origin: left;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+
+}
+
 .bottom {
     position: absolute;
     bottom: 0;
@@ -159,4 +176,20 @@ footer {
 .btn-primary:hover {
     background-color: #161915e0;
     border-color: #fafafa;
+}
+
+/*recipe*/
+.recipe-row {
+    color: #0c0c0c;
+    margin: 5px;
+}
+
+.recipe-row a:hover {
+    color: #0c0c0c;
+}
+
+.recipe-heading {
+    font-size: 2em;
+    text-transform: capitalize;
+    border-bottom: 1px solid;
 }
