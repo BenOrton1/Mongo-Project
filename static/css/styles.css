@@ -47,37 +47,44 @@ a:hover {
     text-align: center;
 }
 
-.header-text a {
+.header-text h1 {
     text-decoration: none;
     color: #fafafa;
+    font-size: 150%;
 }
 
-.header-text a:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 33vw;
-    right: 33vw;
-    border-top: 3px solid #fafafa;
-    border-bottom: 3px solid #fafafa;
-    transform: scale(1);
-    transform-origin: left;
-    transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-}
+@media(min-width:992px) {
+    .header-text h1 {
+        font-size: 2em;
+    }
 
-.header-text a:hover::before {
-    transform: scale(0, 1);
-    transform-origin: left;
-    transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-}
 
+    .header-text a:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 33vw;
+        right: 33vw;
+        border-top: 3px solid #fafafa;
+        border-bottom: 3px solid #fafafa;
+        transform: scale(1);
+        transform-origin: left;
+        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+    }
+
+    .header-text a:hover::before {
+        transform: scale(0, 1);
+        transform-origin: left;
+        transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+    }
+}
 
 
 .header-text a::after {
@@ -106,14 +113,17 @@ a:hover {
     -webkit-transition: all 0.3s ease-in-out;
 }
 
-.nav-row {
-    position: absolute;
-    top: 0%;
+@media(min-width:992px) {
+    .nav-row {
+        position: absolute;
+        top: 0%;
+    }
 }
 
 .nav-link {
     color: #fafafa;
     text-decoration: none;
+    white-space: nowrap;
 
 }
 
@@ -132,7 +142,7 @@ a:hover {
     background-image: url("../images/homepageimage.png");
 }
 
-.jumbotron {
+.jumbo {
     position: relative;
     height: 100vh;
     max-height: 100vw;
@@ -142,12 +152,21 @@ a:hover {
     border-radius: 0;
 }
 
-.jumbotron h1 {
+.jumbo h1 {
     text-align: center;
-    /* margin: 15px; */
+    font-size: 2em;
 }
 
-.jumbotron p {
+@media(min-width:992px) {
+    .jumbo h1 {
+        font-size: 4em;
+        padding: 30px;
+    }
+}
+
+
+
+.jumbo p {
     text-align: center;
 }
 
