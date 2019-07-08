@@ -148,7 +148,22 @@ a:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.jumbo-image-1 {
     background-image: url("../images/homepageimage.png");
+}
+.jumbo-image-2 {
+    background-image: url("../images/jumbo2.jpg");
+}
+.jumbo-image-3 {
+    background-image: url("../images/jumbo3.jpg");
+}
+.jumbo-image-4 {
+    background-image: url("../images/jumbo4.jpg");
+}
+.jumbo-image-5 {
+    background-image: url("../images/jumbo5.jpg");
 }
 
 .jumbo {
