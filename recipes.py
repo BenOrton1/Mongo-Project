@@ -22,7 +22,7 @@ recipes = mongo.db.recipes
 @app.route('/get_recipes', methods=['GET'])
 def get_recipes():
     return render_template('recipes.html', 
-                            recipe_find = recipes.find())
+                            recipe_find = recipes.find().limit(5))
                             
 """add ingredients to recepie"""
                             
@@ -124,7 +124,9 @@ def search_recipe_name():
     searched_name = request.form.get('search_recipe_name').lower()
     return render_template('searched_recipe.html', 
                     this_recipe = recipes.find({'recipe_name':{'$in': [searched_name]}}))
-    
+
+
+"""currnt work on search function"""
 @app.route('/search_recipe', methods=['GET','POST'])
 def search_recipe():
     searched_allergy = request.form.get('allergy')
