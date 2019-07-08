@@ -1,41 +1,55 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="container-fluid">
 
-    <div class="row justify-content-center">
-        <h1>{{ this_recipe.recipe_name }}</h1>
-    </div>
-</div>
-{% for ingredients in this_recipe.ingredient %}
-
-<div class="col-4 ingredient-line">{{ loop.index }} {{ ingredients }}</div>
-{% endfor %} {% for weights in this_recipe.weight %}
-<div class="col-4 ingredient-line"> {{ weights }}</div>
-{{loop.index0}}
-<a href="{{url_for('remove_ingredient', this_recipe_name = this_recipe.recipe_name, 
-this_weight=this_recipe.weight, this_ingredient=this_recipe.ingredient)}}"> delete this ingredient </a> {% endfor %}
-</div>
-
-
-<div class="container-fluid">
-
-    <div class="row justify-content-center">
-
-        <form action="{{ url_for('add_ingredient',this_recipe_name = this_recipe.recipe_name) }}" method="POST" class="col-md-8" id="add_ingredient">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <label for="ingreedients">Ingreedients</label>
-                    <input name="ingredient" id="ingredient" class="form-control" type="text" required>
+<div class="row no-gutters justift-content-center">
+    <div class="container-fluid jumbotron-background">
+        <div class="jumbo">
+            <h1 class="display-4">{{ this_recipe.recipe_name }}</h1>
+            <hr class="my-4">
+            <form action="{{ url_for('add_ingredient',this_recipe_name = this_recipe.recipe_name) }}" method="POST"
+                class="search jumbotron-search col-xs-12 col-md-8" id="add_ingredient">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label for="ingreedients">Ingreedients</label>
+                        <input name="ingredient" id="ingredient" class="form-control" type="text" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="weight">weight</label>
+                        <input name="weight" id="weight" class="form-control" type="text" required>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <label for="weight">weight</label>
-                    <input name="weight" id="weight" class="form-control" type="text" required>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add ingredient</button>
+            </form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        {% for ingredients in this_recipe.ingredient %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line">{{ ingredients }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-3">
+                        {% for weights in this_recipe.weight %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line"> {{ weights }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Add ingredient</button>
-        </form>
+
+            <div class="row justify-content-center">
+                <div class="container">
+                    <a class="jumbotron-text white-text"
+                        href="{{url_for('add_method_page', this_recipe_name = this_recipe.recipe_name)}}">add
+                        instructions</a>
+                    <a class="jumbotron-text white-text right"
+                        href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<a href="{{url_for('add_method_page', this_recipe_name = this_recipe.recipe_name)}}">add instructions</a>
-<a href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a> {% endblock %}
+{% endblock %}
