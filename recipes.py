@@ -115,16 +115,32 @@ def remove_ingredient(this_recipe_name, this_weight, this_ingredient):
     return render_template('add_ingredient.html',
     this_recipe = recipes.find_one({'recipe_name': this_recipe_name}))
     
+@app.route('/search')
+def search():
+    return render_template('search.html')
 
+@app.route('/search_recipe_name', methods=['GET','POST'])
+def search_recipe_name():
+    searched_name = request.form.get('search_recipe_name').lower()
+    return render_template('searched_recipe.html', 
+                    this_recipe = recipes.find({'recipe_name':{'$in': [searched_name]}}))
+    
 @app.route('/search_recipe', methods=['GET','POST'])
 def search_recipe():
-    searched_name = request.form.get('search_recipe').lower()
-    return render_template('searched_recipe.html', this_recipe = recipes.find({'recipe_name':{'$in': [searched_name]}}))
+    searched_allergy = request.form.get('allergy')
+    searched_ingredient = request.form.get('ingreedient')
+    searchedrecipe = recipes.find({'ingreedient':{'$in': [searched_ingredient]}})
+    return render_template('searched_recipe.html', this_recipe=searchedrecipe)
+
+"""
+
+
+elif searched_ingredient:
     
-@app.route('/search_recipe_allergy', methods=['GET','POST'])
-def search_recipe_allergy():
-    searched_name = request.form.get('search_recipe_allergy')
-    return render_template('searched_recipe.html', this_recipe = recipes.find({'allergen':{ '$nin':[searched_name]}}))
+    searchedrecipe = recipes.find({'allergen':{ '$nin':[searched_allergy]}})
+    elif searched_allergy:
+        searchedrecipe = recipes.find({'allergen':{ '$nin':[searched_allergy]}})
+"""
 
 @app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
 def update_recipe(recipe_id):

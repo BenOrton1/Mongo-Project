@@ -1,0 +1,16 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="row no-gutters">
+    <form class="search col-md-8" action="{{url_for('search_recipe')}}" method="POST"
+        id="search_recipes">
+        
+        <input name="allergy" id="allergy" class="form-control form-control-lg" type="text"
+            placeholder="search for recipes that without this allergen">
+        
+        <input name="ingreedient" id="ingredient" class="form-control form-control-lg" type="text"
+            placeholder="search for recipes with this ingredient">
+        <button type="submit" class="search-button">search</button>
+    </form>
+</div>
+
+{% endblock %}
