@@ -1,58 +1,58 @@
 {% extends 'base.html'%} {% block content %}
+<div class="row no-gutters justift-content-center">
+    <div class="container-fluid jumbotron-background jumbo-image-5">
+        <div class="jumbo">
+            <h1 class="display-4">{{ this_recipe.recipe_name }}</h1>
+            <hr class="my-4">
+            <form action="{{ url_for('allergy',this_recipe_name = this_recipe.recipe_name) }}" method="POST"
+                class="search jumbotron-search col-xs-12 col-md-8" id="allergen">
 
-<div class="container-fluid">
+                <label for="allergy">add allergen</label>
+                <textarea name="allergen" id="allergen" class="form-control" type="text" rows="1"></textarea>
 
-    <div class="row justify-content-center">
-        <h1>{{ this_recipe.recipe_name }}</h1>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add step</button>
+            </form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        {% for ingredients in this_recipe.ingredient %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line">{{ ingredients }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-3">
+                        {% for weights in this_recipe.weight %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line"> {{ weights }}</div>
+                        </div>
+                        {% endfor %}
+
+                        {% for allergy in this_recipe.allergen %}
+                        {% if allergy %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line"> {{ allergy }}</div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% for step in this_recipe.method %}
+            {% if step%}
+            <div class="row justify-content-center">
+                <div class="col-md-8 ingredient-line">{{index}} {{ step }}</div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <div class="row justify-content-center">
+                <div class="container">
+                    <a class="jumbotron-text white-text" href="{{url_for('get_recipes')}}">Done</a>
+                    <a class="jumbotron-text white-text"
+                        href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row container-fluid">
-    <div class="col-4">
-        {% for ingredients in this_recipe.ingredient %}
-        <div class="row ingredient-line"> {{ ingredients }}</div>
-        {% endfor %}
-    </div>
-    <div class="col-4">
-        {% for weights in this_recipe.weight %}
-        <div class="row ingredient-line"> {{ weights }}</div>
-        {% endfor %}
-    </div>
-</div>
-<div class="row">
-<ol>
-{% for step in this_recipe.method %}
-
-{% if step%}
-<li class="col-8 ingredient-line"> {{ step }}</li>
-{% endif %}
-{% endfor %}
-</ol>
-</div>
-
-<div class="row">
-<ol>
-{% for allergy in this_recipe.allergen %}
-
-{% if step%}
-<li class="col-8 ingredient-line"> {{ allergy }}</li>
-{% endif %}
-{% endfor %}
-</ol>
-</div>
-<div class="container-fluid">
-
-    <div class="row justify-content-center">
-
-        <form action="{{ url_for('allergy',this_recipe_name = this_recipe.recipe_name) }}" method="POST" class="col-md-8" id="allergen">
-
-            <label for="allergy">add allergen</label>
-            <textarea name="allergen" id="allergen" class="form-control" type="text" rows="1"></textarea>
-
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Add step</button>
-        </form>
-    </div>
-</div>
-<a href="{{url_for('get_recipes')}}">Done</a>
-<a href="{{url_for('allergy', this_recipe_name = this_recipe.recipe_name)}}">add allergy advice</a>
-<a href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a>
 {% endblock %}

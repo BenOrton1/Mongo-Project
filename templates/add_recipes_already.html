@@ -1,26 +1,16 @@
 {% extends 'base.html'%} {% block content %}
-
-
-<div class="container-fluid">
-
-    <div class="row justify-content-center">
-        <h1 class="sub-heading">Add A Recipe</h1>
+<div class="row no-gutters justift-content-center">
+    <div class="container-fluid jumbotron-background jumbo-image-2">
+        <div class="jumbo">
+                <p class="warning">This name is already taken, please chosse a diffent name</p>
+            <hr class="my-4">
+            <form action="{{ url_for('insertrecipes') }}" method="POST" class="search jumbotron-search col-xs-12 col-md-8" id="insertrecipes">
+                <input name="recipe_name" id="recipe_name_input" class="form-control form-control-lg" type="text"
+                    placeholder="Recipe Name" required>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add Recipes Name</button>
+            </form>
+            </form>
+        </div>
     </div>
-</div>
-
-<div class="container-fluid">
-
-    <div class="row justify-content-center">
-        <p class="warning">This name is already taken, please chosse a diffent name</p>
-    </div>
-    <div class="row justify-content-center">
-        <form action="{{ url_for('insertrecipes') }}" method="POST" class="col-md-8" id="insertrecipes">
-            <input name="recipe_name" id="recipe_name_input" class="form-control form-control-lg" type="text" placeholder="Recipe Name" required>
-
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Add Recipes Name</button>
-        </form>
-    </div>
-    <div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
-    <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
 </div>
 {% endblock %}

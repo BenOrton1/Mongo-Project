@@ -153,17 +153,21 @@ a:hover {
 .jumbo-image-1 {
     background-image: url("../images/homepageimage.png");
 }
+
 .jumbo-image-2 {
     background-image: url("../images/jumbo2.jpg");
 }
+
 .jumbo-image-3 {
     background-image: url("../images/jumbo3.jpg");
 }
+
 .jumbo-image-4 {
     background-image: url("../images/jumbo4.jpg");
 }
+
 .jumbo-image-5 {
-    background-image: url("../images/jumbo5.jpg");
+    background-image: url("../images/jumbo5.png");
 }
 
 .jumbo {
@@ -195,7 +199,7 @@ a:hover {
 .jumbotron-text {
     font-size: 1.5em;
     padding-top: 30px;
-    padding-left: 10px;
+    padding: 10px;
 }
 
 .jumbotron-search {
