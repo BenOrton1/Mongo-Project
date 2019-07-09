@@ -22,7 +22,7 @@ recipes = mongo.db.recipes
 @app.route('/get_recipes', methods=['GET'])
 def get_recipes():
     return render_template('recipes.html', 
-                            recipe_find = recipes.find().limit(5))
+                            recipe_find = recipes.find().sort('$natural', -1).limit(5))
                             
 """add ingredients to recepie"""
                             
@@ -91,7 +91,7 @@ def insertrecipes():
         return render_template('add_recipes_already.html',
         this_recipe=recipes.find())
     else:
-        recipes.insert_one({'recipe_name': name})
+        recipes.insert_one(request.form.to_dict())
         return render_template('add_ingredient.html', 
         this_recipe_name = name,
         this_recipe = recipes.find_one({'recipe_name': name})

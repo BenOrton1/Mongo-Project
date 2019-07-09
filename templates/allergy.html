@@ -3,6 +3,7 @@
     <div class="container-fluid jumbotron-background jumbo-image-5">
         <div class="jumbo">
             <h1 class="display-4">{{ this_recipe.recipe_name }}</h1>
+            <p>{{this_recipe.recipe_description}}</p>
             <hr class="my-4">
             <form action="{{ url_for('allergy',this_recipe_name = this_recipe.recipe_name) }}" method="POST"
                 class="search jumbotron-search col-xs-12 col-md-8" id="allergen">
