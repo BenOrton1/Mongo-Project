@@ -80,8 +80,7 @@ def edit(recipe_id):
 
 @app.route('/edit_ingredients/<recipe_id>')
 def edit_ingredients(recipe_id):
-    
-    return render_template('edit_ingredients',
+    return render_template('edit_ingredients.html',
     this_recipe=recipes.find_one({"_id": ObjectId(recipe_id)})) 
 
 """ Add a new recepie"""   
@@ -103,18 +102,7 @@ def one_recipe(recipe_id):
     the_recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('one_recipe.html', 
     this_recipe=the_recipe)
-    
-    
-"""currently not working need to fix"""
-@app.route('/romove_ingredient/<this_recipe_name>/<this_weight>/<this_ingredient>', methods=['GET','POST'])
-def remove_ingredient(this_recipe_name, this_weight, this_ingredient):
-    recipes.find_one_and_update(
-        {'recipe_name': this_recipe_name},
-        {'$pull':{'ingredient':this_ingredient,
-        'weight':this_weight
-        }})
-    return render_template('add_ingredient.html',
-    this_recipe = recipes.find_one({'recipe_name': this_recipe_name}))
+
     
 @app.route('/search')
 def search():
@@ -156,6 +144,24 @@ def update_recipe(recipe_id):
     )
     return redirect(url_for('get_recipes'))
 
+@app.route('/update_ingredience/<this_recipe_name>', methods=['GET', 'POST'])
+def update_ingredience(this_recipe_name):
+    recipes.update(
+    {'recipe_name': this_recipe_name},
+    {'ingredient':request.form.get('ingredient').lower(),
+    'weight':request.form.get('weight').lower()
+    })
+    return render_template(url_for('edit_ingredients_update.html'),
+                this_recipe = recipes.find_one({'recipe_name': this_recipe_name}))
+
+@app.route('/update_ingredience_push/<this_recipe_name>', methods=['GET', 'POST'])
+def update_ingredience_push(this_recipe_name):
+    recipes.find_one_and_update(
+    {'recipe_name': this_recipe_name},
+    {'$push':{'ingredient':request.form.get('ingredient').lower(),
+    'weight':request.form.get('weight').lower()
+    }})
+    return render_template(url_for('edit_ingredients_update.html'))
 
 @app.errorhandler(404) 
 def page_not_found(e):
