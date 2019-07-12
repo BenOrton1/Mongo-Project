@@ -19,7 +19,7 @@
     </div>
 </div>
 <div id="recent_recipes" class="container-fluid">
-    <div class="row align-items-center no-padding">
+    <div class="row no-padding">
         <div class="col-xs-12 col-md-3 recipe-item grey">
             <h2 class="top_bottom_box">New Recipes</h2>
         </div>
@@ -28,15 +28,15 @@
             <a href="{{url_for('one_recipe', recipe_id=recipe._id) }}" class="recipe-heading">
                 {{ recipe.recipe_name }}
             </a>
-            <div class="row">
-                <div class="col-md-3 ">
+            <div class="row padding-on-all-sides">
+                <div class="col-md-12 ">
                     <div class="row"> {{ recipe.recipe_description }}</div>
                 </div>
+            </div>
                 <div class="row">
                     <div class="col-md-2"><a href="{{url_for('edit', recipe_id=recipe._id) }}">Edit </a></div>
                     <div class="col-md-2"><a href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete </a></div>
                 </div>
-            </div>
         </div>
         {% endfor %}
     </div>

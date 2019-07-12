@@ -147,9 +147,12 @@ elif searched_ingredient:
 @app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
 def update_recipe(recipe_id):
     recipes.update( {'_id': ObjectId(recipe_id)},
-    {
+    {"$set":
+        {
         'recipe_name':request.form.get('recipe_name')
-    })
+        }
+    }
+    )
     return redirect(url_for('get_recipes'))
 
 

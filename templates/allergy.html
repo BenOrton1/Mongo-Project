@@ -15,20 +15,6 @@
             </form>
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
-                        {% for ingredients in this_recipe.ingredient %}
-                        <div class="row">
-                            <div class="col-4 ingredient-line">{{ ingredients }}</div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="col-3">
-                        {% for weights in this_recipe.weight %}
-                        <div class="row">
-                            <div class="col-4 ingredient-line"> {{ weights }}</div>
-                        </div>
-                        {% endfor %}
-
                         {% for allergy in this_recipe.allergen %}
                         {% if allergy %}
                         <div class="row">
@@ -36,24 +22,46 @@
                         </div>
                         {% endif %}
                         {% endfor %}
+                </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {% for ingredients in this_recipe.ingredient %}
+                            <div class="row">
+                                <div class="col-4 ingredient-line">{{ ingredients }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-6">
+                            {% for weights in this_recipe.weight %}
+                            <div class="row">
+                                <div class="col-4 ingredient-line"> {{ weights }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="container">
+                        {% for step in this_recipe.method %}
+                        {% if step%}
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 ingredient-line">{{index}} {{ step }}</div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="row justify-content-center">
+                        <div class="container">
+                            <a class="jumbotron-text white-text" href="{{url_for('get_recipes')}}">Done</a>
+                            <a class="jumbotron-text white-text"
+                                href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            {% for step in this_recipe.method %}
-            {% if step%}
-            <div class="row justify-content-center">
-                <div class="col-md-8 ingredient-line">{{index}} {{ step }}</div>
-            </div>
-            {% endif %}
-            {% endfor %}
-            <div class="row justify-content-center">
-                <div class="container">
-                    <a class="jumbotron-text white-text" href="{{url_for('get_recipes')}}">Done</a>
-                    <a class="jumbotron-text white-text"
-                        href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a>
-                </div>
-            </div>
         </div>
+
     </div>
+</div>
 </div>
 {% endblock %}
