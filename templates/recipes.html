@@ -12,26 +12,22 @@
                 <button type="submit" class="btn btn-primary">search</button>
                 <a href="{{url_for('search')}}" class="white-text jumbotron-text ">More search options</a>
                 <div class="row">
-                    <a class="white-text jumbotron-text" href="#recent_recipes">See Recent Recipes</a>
+                    <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
-
-<div id="recent_recipes"> </div>
-<div class="container">
-<div class="row justift-content-center">
+<div id="recent_recipes" class="container-fluid">
+    <div class="row align-items-center no-padding">
+        <div class="col-xs-12 col-md-3 recipe-item grey">
+            <h2 class="top_bottom_box">New Recipes</h2>
+        </div>
         {% for recipe in recipe_find %}
-        <div class="col-md-3 col-xs-12 recipe-row">
-            <div col-md-4>
-                <a href="{{url_for('one_recipe', recipe_id=recipe._id) }}" class="recipe-heading">
-                    {{ recipe.recipe_name }}
-                </a>
-            </div>
-
+        <div class="col-md-3 col-xs-12 recipe-item">
+            <a href="{{url_for('one_recipe', recipe_id=recipe._id) }}" class="recipe-heading">
+                {{ recipe.recipe_name }}
+            </a>
             <div class="row">
                 <div class="col-md-3 ">
                     <div class="row"> {{ recipe.recipe_description }}</div>
@@ -43,6 +39,6 @@
             </div>
         </div>
         {% endfor %}
-</div>
+    </div>
 </div>
 {% endblock %}

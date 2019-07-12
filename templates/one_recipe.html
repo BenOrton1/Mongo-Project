@@ -24,6 +24,8 @@
         {% endfor %}
     </div>
 </div>
-
+<div class="row">
+    <div class="col-md-2"><a href="{{url_for('edit', recipe_id=this_recipe._id) }}">Edit </a></div>
+    <div class="col-md-2"><a href="{{url_for('cancel', recipe_id=this_recipe._id) }}">Delete </a></div>
+</div>
 {% endblock %}
-   
