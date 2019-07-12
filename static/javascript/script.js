@@ -1,38 +1,29 @@
 $(document).ready(function() {
     console.log('this');
-    if (($( document ).height()) < ($( window ).height())) {
-        $('.footer').addclass('bottom');
-    }
-    
-});
-/*    $('#insertrecipes').on('submit', function(event) {
-        $.ajax({
-                data: {
-                    name: $('#recipe_name_input').val()
-                },
-                type: 'POST',
-                url: '/insertrecipe'
-            })
-            .done(function(data) {
-
-                if (data.error) {
-                    $('#errorAlert').text(data.error).show();
-                    $('#successAlert').hide();
-                }
-                else {
-                    $('#successAlert').text(data.output).show();
-                    $('#errorAlert').hide();
-                }
-            });
-        event.preventDefault();
-
+    $("#search-Allergens").click(function(){
+        const allergen = `<form class="search jumbotron-search col-xs-12 col-md-8" action="{{url_for('search_recipe')}}" method="POST"
+        id="search_recipe">
+        <input name="allergy" id="allergy" class="form-control form-control-lg" type="text"
+            placeholder="search for recipes that without this allergen required">
+        <button type="submit" class="btn btn-primary">search</button>
+        <div class="row">
+            <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+        </div>
+    </form>`;
+        $(".change-search").html(allergen);
     });
-    /*
-    1 select add ingredient form 
-    2 prevent default
-    3 store ingredient in array
-    4 sent array to back end
-    5 add new lines to array and update inner html
-    6 remove ingedients from array
-*/
+
+    $("#search-name").click(function(){
+        const recepieName = `<form class="search jumbotron-search col-xs-12 col-md-8" action="{{url_for('search_recipe_name')}}"
+        method="POST" id="search_recipe_names">
+        <input name="search_recipe_name" id="search_recipe_name" class="form-control form-control-lg"
+            type="text" placeholder="search recipe name" required>
+        <button type="submit" class="btn btn-primary">search</button>
+        <div class="row">
+            <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+        </div>
+    </form>`;
+        $(".change-search").html(recepieName);
+    });
+});
 

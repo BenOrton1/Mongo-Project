@@ -5,16 +5,23 @@
             <h1 class="display-4">Welcome to a Bad Cookbook</h1>
             <p>Get started and search for a recepie</p>
             <hr class="my-4">
-            <form class="search jumbotron-search col-xs-12 col-md-8" action="{{url_for('search_recipe_name')}}"
-                method="POST" id="search_recipe_names">
-                <input name="search_recipe_name" id="search_recipe_name" class="form-control form-control-lg"
-                    type="text" placeholder="search recipe name" required>
-                <button type="submit" class="btn btn-primary">search</button>
-                <a href="{{url_for('search')}}" class="white-text jumbotron-text ">More search options</a>
-                <div class="row">
-                    <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+            <div class="change-search">
+                <form class="search jumbotron-search col-xs-12 col-md-8" action="{{url_for('search_recipe_name')}}"
+                    method="POST" id="search_recipe_names">
+                    <input name="search_recipe_name" id="search_recipe_name" class="form-control form-control-lg"
+                        type="text" placeholder="search recipe name" required>
+                    <button type="submit" class="btn btn-primary">search</button>
+                    <div class="row">
+                        <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+                    </div>
+                </form>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <a href="#" class="white-text jumbotron-text" id="search-name">Search by name</a>
+                    <a href="#" class="white-text jumbotron-text" id="search-Allergens">Search Allergens</a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
@@ -33,10 +40,10 @@
                     <div class="row"> {{ recipe.recipe_description }}</div>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-md-2"><a href="{{url_for('edit', recipe_id=recipe._id) }}">Edit </a></div>
-                    <div class="col-md-2"><a href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete </a></div>
-                </div>
+            <div class="row">
+                <div class="col-md-2"><a href="{{url_for('edit', recipe_id=recipe._id) }}">Edit </a></div>
+                <div class="col-md-2"><a href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete </a></div>
+            </div>
         </div>
         {% endfor %}
     </div>

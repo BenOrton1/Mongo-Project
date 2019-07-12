@@ -80,6 +80,7 @@ def edit(recipe_id):
 
 @app.route('/edit_ingredients/<recipe_id>')
 def edit_ingredients(recipe_id):
+    
     return render_template('edit_ingredients',
     this_recipe=recipes.find_one({"_id": ObjectId(recipe_id)})) 
 
@@ -130,12 +131,11 @@ def search_recipe_name():
 @app.route('/search_recipe', methods=['GET','POST'])
 def search_recipe():
     searched_allergy = request.form.get('allergy')
-    searched_ingredient = request.form.get('ingreedient')
+    return render_template('searched_recipe.html', this_recipe=recipes.find({'allergen':{ '$nin':[searched_allergy]}}))
+"""
+searched_ingredient = request.form.get('ingreedient')
     searchedrecipe = recipes.find({'ingreedient':{'$in': [searched_ingredient]}})
     return render_template('searched_recipe.html', this_recipe=searchedrecipe)
-
-"""
-
 
 elif searched_ingredient:
     
@@ -143,6 +143,7 @@ elif searched_ingredient:
     elif searched_allergy:
         searchedrecipe = recipes.find({'allergen':{ '$nin':[searched_allergy]}})
 """
+
 
 @app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
 def update_recipe(recipe_id):
