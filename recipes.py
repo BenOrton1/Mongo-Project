@@ -119,7 +119,9 @@ def search_recipe_name():
 @app.route('/search_recipe', methods=['GET','POST'])
 def search_recipe():
     searched_allergy = request.form.get('allergy')
-    return render_template('searched_recipe.html', this_recipe=recipes.find({'allergen':{ '$nin':[searched_allergy]}}))
+    return render_template('searched_recipe.html')
+
+
 """
 searched_ingredient = request.form.get('ingreedient')
     searchedrecipe = recipes.find({'ingreedient':{'$in': [searched_ingredient]}})
@@ -148,11 +150,11 @@ def update_recipe(recipe_id):
 def update_ingredience(this_recipe_name):
     recipes.update(
     {'recipe_name': this_recipe_name},
-    {'ingredient':request.form.get('ingredient').lower(),
-    'weight':request.form.get('weight').lower()
-    })
-    return render_template(url_for('edit_ingredients_update.html'),
-                this_recipe = recipes.find_one({'recipe_name': this_recipe_name}))
+    {"$set":
+    {'ingredient':request.form.get('ingredient'),
+    'weight':request.form.get('weight')
+    }})
+    return render_template('edit_ingredients_update.html',this_recipe = recipes.find_one({'recipe_name': this_recipe_name}))
 
 @app.route('/update_ingredience_push/<this_recipe_name>', methods=['GET', 'POST'])
 def update_ingredience_push(this_recipe_name):
@@ -161,7 +163,7 @@ def update_ingredience_push(this_recipe_name):
     {'$push':{'ingredient':request.form.get('ingredient').lower(),
     'weight':request.form.get('weight').lower()
     }})
-    return render_template(url_for('edit_ingredients_update.html'))
+    return render_template('edit_ingredients_update.html')
 
 @app.errorhandler(404) 
 def page_not_found(e):

@@ -5,11 +5,22 @@
             <h1 class="display-4">Welcome to a Bad Cookbook</h1>
             <p>Get started and search for a recepie</p>
             <hr class="my-4">
-            <div class="change-search">
+            <div class="name-form">            .
                 <form class="search jumbotron-search col-xs-12 col-md-8" action="{{url_for('search_recipe_name')}}"
                     method="POST" id="search_recipe_names">
                     <input name="search_recipe_name" id="search_recipe_name" class="form-control form-control-lg"
                         type="text" placeholder="search recipe name" required>
+                    <button type="submit" class="btn btn-primary">search</button>
+                    <div class="row">
+                        <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+                    </div>
+                </form>
+            </div>
+            <div class="allergen-form">
+                <form class="search jumbotron-search col-xs-12 col-md-8" action="{{url_for('search_recipe')}}"
+                    method="POST" id="search_recipe">
+                    <input name="allergy" id="allergy" class="form-control form-control-lg" type="text"
+                        placeholder="search for recipes that without this allergen required">
                     <button type="submit" class="btn btn-primary">search</button>
                     <div class="row">
                         <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>

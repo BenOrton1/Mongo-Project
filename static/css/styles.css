@@ -1,7 +1,7 @@
-/*-----base.htm*/
+/*-----general*/
 
 body {
-    background-color: #e4e4c3;
+    background-color: #3c4244;
     overflow-x: hidden;
 }
 
@@ -28,16 +28,11 @@ a {
     padding: 0;
 }
 
-.padding-on-all-sides{
-    padding:30px;
+.padding-on-all-sides {
+    padding: 30px;
 }
 
-/*
-.right {
-    position: relative;
-    left: 80%;
-}
-*/
+
 
 a:hover {
     color: #fafafa;
@@ -61,6 +56,8 @@ a:hover {
     top: 50%;
     transform: translateY(-50%);
 }
+
+/*----------general*/
 
 .header-text {
     text-align: center;
@@ -227,6 +224,11 @@ a:hover {
     padding: 50px;
 }
 
+.scale00 {
+    transform: scale(0, 0);
+}
+
+
 /*form/button*/
 
 .form-control-lg {
@@ -268,9 +270,7 @@ a:hover {
     padding-bottom: 10px;
 }
 
-.hvr-sweep-to-bottom{
-    
-}
+.hvr-sweep-to-bottom {}
 
 .recipe-heading {
     font-size: 2em;
