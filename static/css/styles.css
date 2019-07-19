@@ -212,7 +212,7 @@ a:hover {
 .jumbotron-text {
     font-size: 1.5em;
     padding-top: 30px;
-    padding: 10px;
+    margin: 10px;
 }
 
 .jumbotron-search {
@@ -250,9 +250,10 @@ a:hover {
 /*recipe*/
 .recipe-item {
     height: 300px;
-    border: 2px solid #585555;
-    background-color: #f58c7b;
-    color: #0c0c0c;
+    border-left: 1px solid #fafafa;
+    border-right: 1px solid #fafafa;
+    background-color: #585555;
+    color: #fafafa;
     margin: 100px auto 100px auto;
     text-align: center;
 }
@@ -270,9 +271,8 @@ a:hover {
     padding-bottom: 10px;
 }
 
-.hvr-sweep-to-bottom {}
-
 .recipe-heading {
+    color: #fafafa;
     font-size: 2em;
     text-transform: capitalize;
     border-bottom: 1px solid;

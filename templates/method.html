@@ -10,32 +10,35 @@
                 <textarea name="method" id="method" class="form-control" type="text" rows="3"></textarea>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Add step</button>
             </form>
-            {% for step in this_recipe.method %}
-            {% if step%}
-            <div class="row justify-content-center">
-                <div class="col-md-8 ingredient-line"> {{ step }}</div>
-            </div>
-            {% endif %}
-            {% endfor %}
-            <hr>
+
             <div class="container">
+                    <p class="recipe-heading">Methord</p>
+                    {% for step in this_recipe.method %}
+                    {% if step%}
                     <div class="row">
-                        <div class="col-6">
-                            {% for ingredients in this_recipe.ingredient %}
-                            <div class="row">
-                                <div class="col-4 ingredient-line">{{ ingredients }}</div>
-                            </div>
-                            {% endfor %}
+                        <div class="col-md-8 ingredient-line"> {{ step }}</div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <hr>
+                    <p class="recipe-heading">ingredients</p>
+                <div class="row">
+                    <div class="col-6">
+                        {% for ingredients in this_recipe.ingredient %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line">{{ ingredients }}</div>
                         </div>
-                        <div class="col-6">
-                            {% for weights in this_recipe.weight %}
-                            <div class="row">
-                                <div class="col-4 ingredient-line"> {{ weights }}</div>
-                            </div>
-                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-6">
+                        {% for weights in this_recipe.weight %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line"> {{ weights }}</div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="container">
                     <a class="jumbotron-text white-text"

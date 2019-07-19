@@ -97,6 +97,7 @@ def insertrecipes():
         this_recipe = recipes.find_one({'recipe_name': name})
     )
 
+"""an individial receipe"""
 @app.route('/one_recipe/<recipe_id>')
 def one_recipe(recipe_id):
     the_recipe = recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -119,7 +120,8 @@ def search_recipe_name():
 @app.route('/search_recipe', methods=['GET','POST'])
 def search_recipe():
     searched_allergy = request.form.get('allergy')
-    return render_template('searched_recipe.html')
+    searchedrecipe = recipes.find({'allergen':{ '$nin':[searched_allergy]}})
+    return render_template('searched_recipe.html', this_recipe=searchedrecipe)
 
 
 """
