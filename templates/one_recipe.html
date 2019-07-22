@@ -5,46 +5,45 @@
             <h1 class="display-4">{{ this_recipe.recipe_name }}</h1>
             <p>{{this_recipe.recipe_description}}</p>
             <hr class="my-4">
-            <form action="{{ url_for('add_method',this_recipe_name = this_recipe.recipe_name) }}" method="POST"
-                class="search jumbotron-search col-xs-12 col-md-8" id="step">
-                <textarea name="method" id="method" class="form-control" type="text" rows="3"></textarea>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Add step</button>
-            </form>
-
             <div class="container">
-                    <div class="row">
-                            <div class="col-6">
-                                {% for ingredients in this_recipe.ingredient %}
-                                <div class="row">
-                                    <div class="col-4 ingredient-line">{{ ingredients }}</div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                            <div class="col-6">
-                                {% for weights in this_recipe.weight %}
-                                <div class="row">
-                                    <div class="col-4 ingredient-line"> {{ weights }}</div>
-                                </div>
-                                {% endfor %}
-                            </div>
+
+                <p class="recipe-heading">ingredients</p>
+
+                <div class="row">
+
+
+                    <div class="col-6">
+                        {% for ingredients in this_recipe.ingredient %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line">{{ ingredients }}</div>
                         </div>
-                    <p class="recipe-heading">Methord</p>
-                    {% for step in this_recipe.method %}
-                    {% if step%}
-                    <div class="row">
-                        <div class="col-md-8 ingredient-line"> {{ step }}</div>
+                        {% endfor %}
                     </div>
-                    {% endif %}
-                    {% endfor %}
-                    <hr>
-                    <p class="recipe-heading">ingredients</p>
+                    <div class="col-6">
+                        {% for weights in this_recipe.weight %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line"> {{ weights }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <p class="recipe-heading">Methord</p>
+                {% for step in this_recipe.method %}
+                {% if step%}
+                <div class="row">
+                    <div class="col-md-8 ingredient-line"> {{ step }}</div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <hr>
+
             </div>
             <div class="row justify-content-center">
                 <div class="container">
-                    <a class="jumbotron-text white-text"
-                    href="{{url_for('edit', recipe_id=this_recipe._id) }}">Edit </a>
+                    <a class="jumbotron-text white-text" href="{{url_for('edit', recipe_id=this_recipe._id )}}">Edit
+                    </a>
                     <a class="jumbotron-text white-text right"
-                    href="{{url_for('cancel', recipe_id=this_recipe._id) }}">Delete </a>
+                        href="{{url_for('cancel', recipe_id=this_recipe._id) }}">Delete </a>
 
                 </div>
             </div>

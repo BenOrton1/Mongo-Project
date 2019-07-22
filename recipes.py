@@ -80,6 +80,12 @@ def edit(recipe_id):
 
 @app.route('/edit_ingredients/<recipe_id>')
 def edit_ingredients(recipe_id):
+    recipes.update( {'_id': ObjectId(recipe_id)},
+    {"$unset":{
+        'ingredient':"",'weight':""
+        }
+    }
+    )
     return render_template('edit_ingredients.html',
     this_recipe=recipes.find_one({"_id": ObjectId(recipe_id)})) 
 
@@ -116,25 +122,11 @@ def search_recipe_name():
                     this_recipe = recipes.find({'recipe_name':{'$in': [searched_name]}}))
 
 
-"""currnt work on search function"""
 @app.route('/search_recipe', methods=['GET','POST'])
 def search_recipe():
     searched_allergy = request.form.get('allergy')
     searchedrecipe = recipes.find({'allergen':{ '$nin':[searched_allergy]}})
     return render_template('searched_recipe.html', this_recipe=searchedrecipe)
-
-
-"""
-searched_ingredient = request.form.get('ingreedient')
-    searchedrecipe = recipes.find({'ingreedient':{'$in': [searched_ingredient]}})
-    return render_template('searched_recipe.html', this_recipe=searchedrecipe)
-
-elif searched_ingredient:
-    
-    searchedrecipe = recipes.find({'allergen':{ '$nin':[searched_allergy]}})
-    elif searched_allergy:
-        searchedrecipe = recipes.find({'allergen':{ '$nin':[searched_allergy]}})
-"""
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
@@ -148,25 +140,16 @@ def update_recipe(recipe_id):
     )
     return redirect(url_for('get_recipes'))
 
-@app.route('/update_ingredience/<this_recipe_name>', methods=['GET', 'POST'])
-def update_ingredience(this_recipe_name):
-    recipes.update(
-    {'recipe_name': this_recipe_name},
-    {"$set":
-    {'ingredient':request.form.get('ingredient'),
-    'weight':request.form.get('weight')
-    }})
-    return render_template('edit_ingredients_update.html',this_recipe = recipes.find_one({'recipe_name': this_recipe_name}))
 
-@app.route('/update_ingredience_push/<this_recipe_name>', methods=['GET', 'POST'])
-def update_ingredience_push(this_recipe_name):
-    recipes.find_one_and_update(
-    {'recipe_name': this_recipe_name},
+
+@app.route('/update_ingredience/<recipe_id>', methods=['GET', 'POST'])
+def update_ingredience(recipe_id):
+    recipes.find_one_and_update( {'_id': ObjectId(recipe_id)},
     {'$push':{'ingredient':request.form.get('ingredient').lower(),
     'weight':request.form.get('weight').lower()
     }})
-    return render_template('edit_ingredients_update.html')
-
+    return render_template('edit_ingredients.html',this_recipe = recipes.find_one({'_id': ObjectId(recipe_id)}))
+    
 @app.errorhandler(404) 
 def page_not_found(e):
     return render_template('404.html'), 404

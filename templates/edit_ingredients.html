@@ -5,7 +5,7 @@
             <h1 class="display-4">{{ this_recipe.recipe_name }}</h1>
             <p>{{this_recipe.recipe_description}}</p>
             <hr class="my-4">
-            <form action="{{ url_for('update_ingredience',this_recipe_name = this_recipe.recipe_name) }}" method="POST"
+            <form action="{{ url_for('update_ingredience',recipe_id=this_recipe._id) }}" method="POST"
                 class="search jumbotron-search col-xs-12 col-md-8" id="update_ingredience">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
@@ -19,6 +19,24 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Add ingredient</button>
             </form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        {% for ingredients in this_recipe.ingredient %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line">{{ ingredients }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-6">
+                        {% for weights in this_recipe.weight %}
+                        <div class="row">
+                            <div class="col-4 ingredient-line"> {{ weights }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="container">
                     <div class="container">
