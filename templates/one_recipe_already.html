@@ -2,23 +2,15 @@
 <div class="row no-gutters justift-content-center">
     <div class="container-fluid jumbotron-background jumbo-image-4">
         <div class="jumbo">
-            <div class="name justify-content-center">
-                <h1 class="display-4">{{ this_recipe.recipe_name }}</h1>
-                <p>{{this_recipe.recipe_description}}</p>
-                <div class="col center-text">
-                    <a href="#" class="update-name-button white-text">Update Name and Description</a>
-                </div>
-            </div>
-            <div class="update-name">
-                <form action="{{ url_for('update_recipe', recipe_id=this_recipe._id) }}" method="POST"
-                    class="search jumbotron-search col-xs-12 col-md-8" id="insertrecipes">
-                    <input name="recipe_name" id="recipe_name_input" class="form-control form-control-lg" type="text"
-                        placeholder="{{this_recipe.recipe_name}}" required>
-                    <textarea name="recipe_description" id="recipe_description" class="form-control form-control-lg"
-                        type="text" rows="3" placeholder="{{this_recipe.recipe_description}}" required></textarea>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Update Name</button>
-                </form>
-            </div>
+            <p class="warning padding-15">This name is already taken, please chosse a diffent name</p>
+            <form action="{{ url_for('update_recipe', recipe_id=this_recipe._id) }}" method="POST"
+                class="search jumbotron-search col-xs-12 col-md-8" id="insertrecipes">
+                <input name="recipe_name" id="recipe_name_input" class="form-control form-control-lg" type="text"
+                    placeholder="{{this_recipe.recipe_name}}" required>
+                <textarea name="recipe_description" id="recipe_description" class="form-control form-control-lg"
+                    type="text" rows="3" placeholder="{{this_recipe.recipe_description}}" required></textarea>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Update Name</button>
+            </form>
             <hr class="my-4">
             <div class="container">
                 <p class="recipe-heading">ingredients</p>
@@ -85,12 +77,9 @@
                 <hr>
             </div>
             <div class="row justify-content-center ">
-
                 <div class="container no-padding">
-
                     <a class="jumbotron-text white-text right"
                         href="{{url_for('cancel', recipe_id=this_recipe._id) }}">Delete </a>
-
                 </div>
             </div>
         </div>
