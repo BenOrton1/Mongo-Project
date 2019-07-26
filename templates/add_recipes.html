@@ -14,7 +14,7 @@
                     required></textarea>
                     <div class="row">
                         <div class="input-field col s12">
-                            <select id="category" name="category_name">
+                            <select class="form-control form-control-lg" id="cuisine" name="cuisine_name">
                                 <option value="" disabled selected>Add cuisine</option>
                                 {% for cuisinetype in cuisine %}
                                 <option value="{{cuisinetype.cuisine_name}}">{{cuisinetype.cuisine_name}}</option>

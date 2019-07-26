@@ -4,29 +4,45 @@
         <div class="jumbo">
             <h1 class="display-4">Welcome to a Bad Cookbook</h1>
             <p>Get started and search for a recepie</p>
-            <hr class="my-4">          .
-                <form class="search jumbotron-search col-xs-12 col-md-8 name-form" action="{{url_for('search_recipe_name')}}"
-                    method="POST" id="search_recipe_names">
-                    <input name="search_recipe_name" id="search_recipe_name" class="form-control form-control-lg"
-                        type="text" placeholder="search recipe name" required>
-                    <button type="submit" class="btn btn-primary">search</button>
-                    <div class="row">
-                        <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
-                    </div>
-                </form>
-                <form class="search jumbotron-search col-xs-12 col-md-8 allergen-form" action="{{url_for('search_recipe')}}"
-                    method="POST" id="search_recipe">
-                    <input name="allergy" id="allergy" class="form-control form-control-lg" type="text"
-                        placeholder="search for recipes that without this allergen required">
-                    <button type="submit" class="btn btn-primary">search</button>
-                    <div class="row">
-                        <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
-                    </div>
-                </form>
+            <hr class="my-4"> .
+            <form class="search jumbotron-search col-xs-12 col-md-8 name-form"
+                action="{{url_for('search_recipe_name')}}" method="POST" id="search_recipe_names">
+                <input name="search_recipe_name" id="search_recipe_name" class="form-control form-control-lg"
+                    type="text" placeholder="search recipe name" required>
+                <button type="submit" class="btn btn-primary">search</button>
+                <div class="row">
+                    <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+                </div>
+            </form>
+            <form class="search jumbotron-search col-xs-12 col-md-8 allergen-form" action="{{url_for('search_recipe')}}"
+                method="POST" id="search_recipe">
+                <input name="allergy" id="allergy" class="form-control form-control-lg" type="text"
+                    placeholder="search for recipes that without this allergen required">
+                <button type="submit" class="btn btn-primary">search</button>
+                <div class="row">
+                    <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+                </div>
+            </form>
+            <form class="search jumbotron-search col-xs-12 col-md-8 cuisine_form" action="{{url_for('search_cuisine')}}">
+                <div class="input-field col s12">
+                    <select class="form-control form-control-lg" id="cuisine" name="cuisine_name">
+                        <option value="" disabled selected>Add cuisine</option>
+                        {% for cuisinetype in cuisine %}
+                        <option value="{{cuisinetype.cuisine_name}}">{{cuisinetype.cuisine_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+                <div class="row">
+                    <a class="white-text jumbotron-text" href="#recent_recipes">See New Recipes</a>
+                </div>
+            </form>
+
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row space-around">
                     <a href="#" class="white-text jumbotron-text" id="search-name">Search by name</a>
-                    <a href="#" class="white-text jumbotron-text" id="search-Allergens">Search Allergens</a>
+                    <a href="#" class="white-text jumbotron-text" id="search-Allergens">Search by Allergens</a>
+                    <a href="#" class="white-text jumbotron-text" id="search-cuisine">Search by cuisine</a>
                 </div>
             </div>
         </div>
@@ -48,7 +64,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 white-text"><a class="white-text" href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete </a></div>
+                <div class="col-md-2 white-text"><a class="white-text"
+                        href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete </a></div>
             </div>
         </div>
         {% endfor %}

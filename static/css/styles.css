@@ -197,7 +197,10 @@ a:hover {
     color: #fafafa;
     border-radius: 0;
 }
-
+.space-around{
+    display: flex;
+    justify-content: space-around;
+}
 .jumbo h1 {
     text-align: center;
     font-size: 2em;

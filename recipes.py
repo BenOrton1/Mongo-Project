@@ -124,8 +124,8 @@ def edit_method(recipe_id):
 
 @app.route('/insertcuisine', methods=['GET','POST'])
 def insertcuisine():
-    name = request.form['cuisine_type']
-    if mongo.db.cuisine.find_one({'cuisine_type': name}):
+    name = request.form['cuisine_name']
+    if mongo.db.cuisine.find_one({'cuisine_name': name}):
             return render_template('add_cuisine_already.html')
     else:
         _cuisine = mongo.db.cuisine.find()
@@ -156,10 +156,12 @@ def one_recipe(recipe_id):
     return render_template('one_recipe.html', 
     this_recipe=the_recipe)
 
-    
-@app.route('/search')
-def search():
-    return render_template('search.html')
+
+@app.route('/search_cuisine', methods=['GET','POST'])
+def search_cuisine():
+    searched_cuisine = request.form.get('cuisine_name')
+    return render_template('searched_recipe.html', 
+                    this_recipe = recipes.find({'cuisine_name':{'$in': [searched_cuisine]}}))
 
 @app.route('/search_recipe_name', methods=['GET','POST'])
 def search_recipe_name():
