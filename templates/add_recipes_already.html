@@ -13,6 +13,23 @@
                     type="text" rows="3"
                     placeholder='Recipe description e.g. "A Cajun-inspired rice pot recipe with spicy Spanish sausage, sweet peppers and tomatoes"'
                     required></textarea>
+
+                    <!--here-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="category" name="category_name">
+                            <option value="" disabled selected>Add cuisine</option>
+                            {% for cuisine-type in cuisine %}
+                            <option value="{{cuisine-type.cuisine_name}}">{{cuisine-type.cuisine_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <a href="#">Add new cuisine type</a>
+                </div>
+<!--here-->
+                <input name="recipe_cuisine" id="recipe_cuisine" class="form-control form-control-lg" type="text"
+                    placeholder="cuisine" required>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Add Recipes Name</button>
             </form>
         </div>

@@ -21,8 +21,15 @@ recipes = mongo.db.recipes
 @app.route('/')
 @app.route('/get_recipes', methods=['GET'])
 def get_recipes():
+    _cuisine = mongo.db.cuisine.find()
+    cuisine_list = [cuisine for cuisine in _cuisine]
     return render_template('recipes.html', 
-                            recipe_find = recipes.find().sort('$natural', -1).limit(5))
+                            recipe_find = recipes.find().sort('$natural', -1).limit(5),
+                            cuisine = cuisine_list)
+    
+@app.route('/add_cuisine')
+def add_cuisine():
+    return render_template('add_cuisine.html')
                             
 """add ingredients to recepie"""
                             
@@ -52,7 +59,10 @@ def add_method(this_recipe_name):
     
 @app.route('/add_recipes')
 def add_recipes():
+    _cuisine = mongo.db.cuisine.find()
+    cuisine_list = [cuisine for cuisine in _cuisine]
     return render_template('add_recipes.html',
+    cuisine = cuisine_list,
     this_recipe=recipes.find())
     
 
@@ -111,7 +121,19 @@ def edit_method(recipe_id):
     )
     return render_template('edit_method.html',
     this_recipe=recipes.find_one({"_id": ObjectId(recipe_id)})) 
-    
+
+@app.route('/insertcuisine', methods=['GET','POST'])
+def insertcuisine():
+    name = request.form['cuisine_type']
+    if mongo.db.cuisine.find_one({'cuisine_type': name}):
+            return render_template('add_cuisine_already.html')
+    else:
+        _cuisine = mongo.db.cuisine.find()
+        cuisine_list = [cuisine for cuisine in _cuisine]
+        mongo.db.cuisine.insert_one(request.form.to_dict())
+        return render_template('add_recipes.html',
+        cuisine = cuisine_list,
+        this_recipe=recipes.find())
 
 """ Add a new recepie"""   
 @app.route('/insertrecipe', methods=['GET','POST'])
