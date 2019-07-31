@@ -24,7 +24,7 @@ def get_recipes():
     _cuisine = mongo.db.cuisine.find()
     cuisine_list = [cuisine for cuisine in _cuisine]
     return render_template('recipes.html', 
-                            recipe_find = recipes.find().sort('$natural', -1).limit(5),
+                            recipe_find = recipes.find().sort('$natural', -1).limit(3),
                             cuisine = cuisine_list)
     
 @app.route('/add_cuisine')

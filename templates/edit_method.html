@@ -5,7 +5,7 @@
             <h1 class="display-4">{{ this_recipe.recipe_name }}</h1>
             <p>{{this_recipe.recipe_description}}</p>
             <hr class="my-4">
-            <form action="{{ url_for('_method',this_recipe_name = this_recipe.recipe_name) }}" method="POST"
+            <form action="{{ url_for('update_method',this_recipe_name = this_recipe.recipe_name) }}" method="POST"
                 class="search jumbotron-search col-xs-12 col-md-8" id="step">
                 <textarea name="method" id="method" class="form-control" type="text" rows="3"></textarea>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Add step</button>
@@ -42,7 +42,7 @@
             <div class="row justify-content-center">
                 <div class="container">
                     <div class="container">
-                        <a class="jumbotron-text white-text" href="{{url_for('get_recipes')}}">Done</a>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block"><a class="jumbotron-text white-text" href="{{url_for('get_recipes')}}">Done</a></button>
                     </div>
                 </div>
             </div>

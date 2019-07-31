@@ -57,10 +57,9 @@
             </div>
             <div class="row justify-content-center">
                 <div class="container">
-                    <a class="jumbotron-text white-text" href="{{url_for('get_recipes')}}">Done</a>
-                    <a class="jumbotron-text white-text right"
-                        href="{{url_for('cancel', recipe_id=this_recipe._id)}}">cancel</a>
-
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"><a class="jumbotron-text white-text" href="{{url_for('get_recipes')}}">Done</a></button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"><a class="jumbotron-text white-text right"
+                        href="{{url_for('cancel', recipe_id=this_recipe._id)}}">canel</a></button>
                 </div>
             </div>
         </div>
