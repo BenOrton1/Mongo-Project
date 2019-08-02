@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    height: 15vh;
+    height: 25vh;
     background-color: #3c4244;
 }
 
@@ -27,14 +27,16 @@ a {
 .no-padding {
     padding: 0;
 }
-.padding-15{
-    padding:15px;
+
+.padding-15 {
+    padding: 15px;
 }
 
 .padding-on-all-sides {
     padding: 30px;
 }
-.center-text{
+
+.center-text {
     text-align: center;
 }
 
@@ -139,7 +141,9 @@ a:hover {
     border-top: 3px solid;
     border-bottom: 3px solid;
 }
-
+.nav-row{
+    padding: 10px;
+}
 @media(min-width:992px) {
     .nav-row {
         position: absolute;
@@ -159,8 +163,7 @@ a:hover {
 /*jumbotron*/
 
 .jumbotron-background {
-    height: 100vh;
-    max-height: 100vw;
+    height: 200vh;
     padding: 0;
     background-attachment: fixed;
     background-position: center;
@@ -190,17 +193,29 @@ a:hover {
 
 .jumbo {
     position: relative;
-    height: 100vh;
-    max-height: 100vw;
+    height: 200vh;
     width: 100vw;
     background-color: #293c28d9;
     color: #fafafa;
     border-radius: 0;
 }
-.space-around{
+@media(min-width:992px) {
+    .jumbotron-background {
+        height: 100vh;
+        max-height: 100vw;
+    }
+    .jumbo {
+        height: 100vh;
+        max-height: 100vw;
+    }
+
+}
+
+.space-around {
     display: flex;
     justify-content: space-around;
 }
+
 .jumbo h1 {
     text-align: center;
     font-size: 2em;
@@ -216,9 +231,10 @@ a:hover {
 .jumbo p {
     text-align: center;
 }
-.jumbo a{
+
+.jumbo a {
     text-align: center;
-    font-size:1.2em;
+    font-size: 1.2em;
 }
 
 .jumbotron-text {
@@ -289,6 +305,6 @@ a:hover {
     border-bottom: 1px solid;
 }
 
-.update-name{
-    padding-top:30px;
+.update-name {
+    padding-top: 30px;
 }

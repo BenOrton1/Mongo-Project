@@ -13,8 +13,8 @@
                     placeholder='Recipe description e.g. "A Cajun-inspired rice pot recipe with spicy Spanish sausage, sweet peppers and tomatoes"'
                     required></textarea>
                     <div class="row">
-                        <div class="input-field col s12">
-                            <select class="form-control form-control-lg" id="cuisine" name="cuisine_name">
+                        <div class="input-field col-md-4 s12 col-xs-12">
+                            <select class="form-control form-control-lg" id="cuisine" name="cuisine_name" required>
                                 <option value="" disabled selected>Add cuisine</option>
                                 {% for cuisinetype in cuisine %}
                                 <option value="{{cuisinetype.cuisine_name}}">{{cuisinetype.cuisine_name}}</option>

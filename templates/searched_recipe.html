@@ -1,25 +1,30 @@
 {% extends 'base.html'%} {% block content %}
-<div class="row no-padding space-around">
-    <div class="col-md-9">
-        <div class="row">
+<div class="row no-gutters justift-content-center">
+    <div class="container-fluid jumbotron-background jumbo-image-2">
+        <div class="jumbo">
 
-
-            {% for recipe in this_recipe %}
-            <div class="col-md-4 col-xs-12 recipe-item">
-                <a href="{{url_for('one_recipe', recipe_id=recipe._id) }}" class="recipe-heading">
-                    {{ recipe.recipe_name }}
-                </a>
-                <div class="row padding-on-all-sides">
-                    <div class="col-md-12 ">
-                        <div class="row"> {{ recipe.recipe_description }}</div>
+            <div class="row no-padding space-around">
+                <div class="col-md-9">
+                    <div class="row">
+                        {% for recipe in this_recipe %}
+                        <div class="col-md-4 col-xs-12 recipe-item">
+                            <a href="{{url_for('one_recipe', recipe_id=recipe._id) }}" class="recipe-heading">
+                                {{ recipe.recipe_name }}
+                            </a>
+                            <div class="row padding-on-all-sides">
+                                <div class="col-md-12 ">
+                                    <div class="row"> {{ recipe.recipe_description }}</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 white-text"><a class="white-text"
+                                        href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete </a></div>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 white-text"><a class="white-text"
-                            href="{{url_for('cancel', recipe_id=recipe._id) }}">Delete </a></div>
-                </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>
